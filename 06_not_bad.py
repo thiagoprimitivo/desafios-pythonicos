@@ -11,7 +11,16 @@ Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 
 def not_bad(s):
     # +++ SUA SOLUÇÃO +++
-    return
+    not_initial_position = s.find('not')
+    bad_initial_position = s.find('bad')
+
+    if bad_initial_position > 0:
+        if not_initial_position < bad_initial_position:
+            bad_final_position = bad_initial_position+len('bad')
+            string_to_replace = s[not_initial_position:bad_final_position]
+            return s.replace(string_to_replace, 'good')
+
+    return s
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
