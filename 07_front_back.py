@@ -10,24 +10,23 @@ Exemplo: 'abcde', a metade da frente é 'abc' e a de trás é 'de'.
 Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
+
+def split_string(s):
+    if len(s) % 2 == 0:
+        tamanho_frente_s = len(s)/2 
+        tamanho_tras_s = len(s)/2
+    else:
+        tamanho_frente_s = (len(s)/2) + 1
+        tamanho_tras_s = len(s)/2 + 1
+
+    return tamanho_frente_s, tamanho_tras_s
+
 def front_back(a, b):
     # +++ SUA SOLUÇÃO +++
-    if len(a) % 2 == 0:
-        tamanho_frente_a = len(a)/2 
-        tamanho_tras_a = len(a)/2
-    else:
-        tamanho_frente_a = (len(a)/2) + 1
-        tamanho_tras_a = len(a)/2 + 1
+    tamanho_frente_a, tamanho_tras_a = split_string(a)
+    tamanho_frente_b, tamanho_tras_b = split_string(b)
 
-    if len(b) % 2 == 0:
-        tamanho_frente_b = len(b)/2 
-        tamanho_tras_b = len(b)/2
-    else:
-        tamanho_frente_b = (len(b)/2) + 1
-        tamanho_tras_b = len(b)/2 + 1
-
-    return a[:int(tamanho_frente_a)] + b[:int(tamanho_frente_b)] + a[int(tamanho_tras_a):] + b[int(tamanho_tras_b):]
-
+    return ''.join([a[:int(tamanho_frente_a)], b[:int(tamanho_frente_b)], a[int(tamanho_tras_a):], b[int(tamanho_tras_b):]])
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
