@@ -10,7 +10,11 @@ Irá retornar: [1, 2, 3]
 
 def remove_adjacent(nums):
     # +++ SUA SOLUÇÃO +++
-    return
+    listn = [nums[0]] if nums else []
+    for i, j in enumerate(nums):
+        if nums[i] != listn[-1]:
+            listn.append(nums[i])
+    return listn
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
