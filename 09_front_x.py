@@ -13,7 +13,9 @@ antes de combina-las.
 
 def front_x(words):
     # +++ SUA SOLUÇÃO +++
-    return
+    words_with_x_first = [word for word in words if word[0] == 'x']
+    words_without_x_first = [word for word in words if word[0] != 'x']
+    return sorted(words_with_x_first) + sorted(words_without_x_first)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
