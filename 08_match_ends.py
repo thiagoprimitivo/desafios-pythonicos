@@ -10,14 +10,9 @@ PS: Python não possui o operador ++, porém += funciona.
 
 def match_ends(words):
     # +++ SUA SOLUÇÃO +++
-    contador = 0
-
-    for word in words:
-        if (len(word) >= 2):
-            if (word[0] == word[-1]):
-                contador += 1
-    
-    return contador
+    gte_2_char = [word for word in words if (len(word) >= 2)]
+    first_last_char_equal = [word for word in gte_2_char if (word[0] == word[-1])]
+    return len(first_last_char_equal)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
