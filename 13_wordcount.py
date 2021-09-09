@@ -52,7 +52,7 @@ e conferindo cada etapa do seu progresso.
 """
 
 import sys
-
+from itertools import islice
 
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
@@ -66,8 +66,7 @@ def file_to_string(filename):
     #Coloca todo o texto em minúsculo
     words_lower = string_file.lower()
 
-    #Ordena em ordem alfabética
-    return sorted(words_lower)
+    return words_lower
 
 def create_dictionary(words):
     word_to_print = ''
@@ -88,9 +87,11 @@ def create_dictionary(words):
 
 def print_words(filename):
 
-    words = file_to_string(filename) 
+    words = file_to_string(filename)
 
-    dictionary = create_dictionary(words)
+    words_ordered = sorted(words)
+
+    dictionary = create_dictionary(words_ordered)
 
     for d in dictionary:
         print(d, '', dictionary[d])
@@ -104,7 +105,7 @@ def print_top(filename):
 
     dictionary_top = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
 
-    for word in dictionary_top: 	
+    for word in islice(dictionary_top, 20):	
         print(word[0], word[1])
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
