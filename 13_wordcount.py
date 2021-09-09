@@ -56,7 +56,56 @@ import sys
 
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+def file_to_string(filename):
+    #Ler o arquivo
+    file = open(filename, "r")
 
+    #Remove as quebras de linhas e espaços
+    string_file = file.read().replace('\n', '').replace(' ', '')
+
+    #Coloca todo o texto em minúsculo
+    words_lower = string_file.lower()
+
+    #Ordena em ordem alfabética
+    return sorted(words_lower)
+
+def create_dictionary(words):
+    word_to_print = ''
+    dictionary = {}
+    count = 1
+
+    for w in words:
+        if w != word_to_print:
+            word_to_print = w
+            count = 1
+            dictionary[w] = count
+        else:
+            count += 1
+            dictionary[w] = count
+
+    return dictionary
+
+
+def print_words(filename):
+
+    words = file_to_string(filename) 
+
+    dictionary = create_dictionary(words)
+
+    for d in dictionary:
+        print(d, '', dictionary[d])
+
+
+def print_top(filename):
+
+    words = file_to_string(filename) 
+
+    dictionary = create_dictionary(words)
+
+    dictionary_top = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
+
+    for word in dictionary_top: 	
+        print(word[0], word[1])
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
